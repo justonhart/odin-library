@@ -1,0 +1,66 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+h1, h2, h3{
+	margin: 0;
+}
+
+body{
+	display: grid;
+	grid-template: min-content auto / min-content auto;
+}
+
+body > *{
+	padding:8px;
+}
+
+#header{
+	grid-column: 1 / -1;
+	border-bottom:1px solid black;
+}
+
+#bookForm {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-items: left;
+	height: min-content;
+	gap: 1rem;
+}
+
+#bookForm h2{
+	grid-column: 1 / -1;
+}
+
+#bookList{
+	border-left: 1px solid black;
+	flex: 1;
+	margin: 0;
+	list-style-type: none;
+	background-color: #e6e6e6;
+	overflow: auto;
+	padding-right: 16px;
+	scrollbar-width: thin;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: baseline;
+	gap: 1rem;
+}
+
+
+#bookList li{
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	padding: 8px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px gray;
+	width: 200px;
+	height: min-content;
+}
+
+.demo{
+	color: gray;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Odin Library</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div id="header">
+		<h1>Odin library</h1>
+		<p>Use the form below to manage your collection!</p>
+	</div>
+	<form id="bookForm">
+		<h2>Add books</h2>
+		<label for="title">Book title:</label>
+		<input type="text" name="title" id="title" required tabindex="1">
+		<label for="author">Author:</label>
+		<input type="text" name="author" id="author" required tabindex="2">
+		<label for="pageCount">Page count:</label>
+		<input type="number" name="pageCount" id="pageCount" required tabindex="3">
+		<label for="read">Read?:</label>
+		<input type="checkbox" name="read" id="read" tabindex="4">
+		<input type="submit" value="Add book">
+	</form>
+	<ul id="bookList">
+		<li class="demo">
+			<span>Title</span>
+			<span>Author</span>
+			<span>Page Count</span>
+			<span>Read</span>
+		</li>
+	</ul>
+</body>
+</html>
