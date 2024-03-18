@@ -13,7 +13,7 @@ addEventListener('submit', event => {
 		);
 		addBookToLibrary(newBook);
 		fields[0].focus();
-		
+		fields[0].select();
 	}
 });
 
@@ -34,20 +34,54 @@ function addBookToLibrary(book){
 
 function renderLibrary(){
 	bookList.innerHTML = "";
-	myLibrary.forEach(book => {
+	myLibrary.forEach((book, index) => {
 		const newBook = document.createElement('li');
+		newBook.dataset.index = index;
+		if(book.read){
+			newBook.classList.add('read');
+		}
+
 		const title = document.createElement('span');
 		title.textContent = book.title;
+		title.classList.add('title');
 		newBook.appendChild(title);
+
 		const author = document.createElement('span');
 		author.textContent = book.author;
+		author.classList.add('author');
 		newBook.appendChild(author);
+
 		const pageCount = document.createElement('span');
-		pageCount.textContent = book.pageCount;
+		pageCount.textContent = 'Page count: ' + book.pageCount;
 		newBook.appendChild(pageCount);
+
 		const read = document.createElement('span');
 		read.textContent = 'Read: ' + (book.read ? 'True' : 'False');
 		newBook.appendChild(read);
+	
+		const buttonPanel = document.createElement('div');
+		buttonPanel.classList.add('buttonPanel');
+
+		const readButton = document.createElement('button');
+		readButton.textContent = '✔';
+		readButton.addEventListener('click', (event) => {
+			const index = event.target.parentElement.parentElement.dataset.index;
+			myLibrary[index].read = !myLibrary[index].read;
+			renderLibrary();
+		});
+		buttonPanel.appendChild(readButton);
+
+		const deleteButton = document.createElement('button');
+		deleteButton.textContent = '✖';
+		deleteButton.addEventListener('click', (event) => {
+			const index = event.target.parentElement.parentElement.dataset.index;
+			myLibrary.splice(index, 1);
+			renderLibrary();
+		});
+		buttonPanel.appendChild(deleteButton);
+
+		newBook.appendChild(buttonPanel);
+
 		bookList.appendChild(newBook);
 	});
 }
